@@ -1,4 +1,4 @@
-import{test, expect} from '@playwright/test';
+import{test, expect} from './fixture';
 import {faker} from '@faker-js/faker';
 
 test.describe('Registration Feature', async()=>{
@@ -42,6 +42,7 @@ test.describe('Registration Feature', async()=>{
         // Verify that the registration was successful
         await expect(page.getByRole('link', { name: email})).toBeVisible();
         await expect(page.getByText('Your registration completed')).toBeVisible();
+
         await expect(page.getByRole('button', { name: 'Continue' })).toBeVisible();
 
     })
