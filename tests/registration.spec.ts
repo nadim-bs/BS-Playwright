@@ -1,6 +1,7 @@
 import{test, expect} from './fixture';
 import {faker} from '@faker-js/faker';
 
+test.use({storageState:{cookies:[], origins:[]}}); // Clear cookies and local storage before each test
 test.describe('Registration Feature', async()=>{
     test.beforeEach(async ({page, baseURL})=>{
         await page.goto(baseURL!);
