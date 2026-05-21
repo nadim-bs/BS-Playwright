@@ -45,10 +45,30 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'setup',
+      testMatch: /global-setup\.ts/,
+      use: {
+        headless: true,
+      },
+      teardown: 'teardown',
+    },
+    {
+      name: 'teardown',
+      testMatch: /global-teardown\.ts/,
+      use: {
+        headless: true,
+        storageState: './auth.json',
+      },
+    },
+
+    {
+      
       name: 'chromium',
       use: { ...devices['Desktop Chrome'],
         headless: false,
+        storageState: './auth.json',
        },
+       dependencies: ['setup'],
       
     },
 
